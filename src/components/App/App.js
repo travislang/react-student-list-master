@@ -8,6 +8,17 @@ class App extends Component {
     studentList: [],
   };
 
+  getStudents = () => {
+      axios.get('/students')
+      .then( res => {
+          this.setState({
+              studentList: res.data
+          });
+      })
+      .catch( err => {
+
+      })
+  }
   // This function is called by the StudentForm when the submit button is pressed
   addStudent = (newStudent) => {
     console.log(newStudent);
@@ -29,7 +40,9 @@ class App extends Component {
         <br/>
         <StudentForm addStudent={this.addStudent}/>
 
-        <p>Student list goes here.</p>
+        <ul>
+            <StudentList />
+        </ul>
       </div>
     );
   }
