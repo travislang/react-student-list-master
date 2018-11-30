@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 
 // POST students
 router.post('/', (req, res) => {
-    const newStudent = req.body.github_name;
+    console.log(req.body);
+    const newStudent = req.body.github;
     const sqlText = `INSERT INTO students (github_name) VALUES ($1)`;
 
     pool.query(sqlText, [newStudent])
